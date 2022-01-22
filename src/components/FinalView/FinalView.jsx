@@ -4,7 +4,7 @@ function RestartView() {
     return (
         <>
         <h3>Thank you!</h3>
-        <Link to="/welcome">
+        <Link to="/">
             <button>
                 Restart
             </button>
