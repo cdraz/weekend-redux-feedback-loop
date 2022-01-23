@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function ReviewView() {
-    // Store access and dispatch hook
+    // Store access and history hook
     const feedback = useSelector(store => store.feedbackReducer);
-    const dispatch = useDispatch();
+    const history = useHistory();
 
     console.log('Current feedback is: ', feedback);
 
@@ -23,7 +23,13 @@ function ReviewView() {
             return;
         }
 
-        // POST feedback if confirmed
+        // Validate that all required scores are provided
+        if (!feedback.feeling || !feedback.understanding || !feedback.support) {
+            window.alert('Missing a required score. Please go back and ensure all required scores are provided, then try again.')
+            return;
+        }
+
+        // POST feedback if confirmed and client side validation is passed
         console.log('Submitting final feedback: ', feedback);
         axios.post('/feedback', feedback)
         .then( res => {
@@ -33,6 +39,8 @@ function ReviewView() {
             console.error('POST /feedback failed', err);
         });
 
+        // Navigate to next page
+        history.push('/final');
     }
 
     return (
@@ -58,11 +66,14 @@ function ReviewView() {
                 </tr>
             </tbody>
         </table>
-        <Link to="/final">
-            <button onClick={onSubmit}>
-                Submit
-            </button>
+        <Link to="/comments">
+                    <button type="button">
+                        Back
+                    </button>
         </Link>
+        <button onClick={onSubmit}>
+            Submit
+        </button>
         </>
     )
 }

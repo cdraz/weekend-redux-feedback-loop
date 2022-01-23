@@ -41,6 +41,11 @@ function SupportView() {
                     value={supportScore}
                     onChange={event => setSupportScore(event.target.value)}
                 />
+                <Link to="/understanding">
+                    <button type="button">
+                        Back
+                    </button>
+                </Link>
                 <input
                     type="submit"
                     value="Continue"
