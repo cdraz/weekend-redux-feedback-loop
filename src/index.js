@@ -19,6 +19,7 @@ const feedbackReducer = (state = {
     switch (action.type) {
         case 'SUBMIT_FEEDBACK':
             console.log('in SUBMIT_FEEDBACK');
+            return action.payload;
         default:
             return state;
     }
