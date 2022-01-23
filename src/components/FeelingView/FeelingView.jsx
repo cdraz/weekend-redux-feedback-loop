@@ -8,8 +8,6 @@ function FeelingView() {
     const feedback = useSelector(store => store.feedbackReducer);
     const dispatch = useDispatch();
 
-    console.log('Current feedback is: ', feedback);
-
     // State variable for feeling score
     const [feelingScore, setFeelingScore] = useState(feedback.feeling);
 

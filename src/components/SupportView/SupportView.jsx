@@ -8,8 +8,6 @@ function SupportView() {
     const feedback = useSelector(store => store.feedbackReducer);
     const dispatch = useDispatch();
 
-    console.log('Current feedback is: ', feedback);
-
     // State variable for support score
     const [supportScore, setSupportScore] = useState(feedback.support);
 
@@ -29,7 +27,7 @@ function SupportView() {
 
     return (
         <>
-            <h3>Support</h3>
+            <h3>How well are you being supported?</h3>
             <input 
                 id="support_score"
                 name="support"

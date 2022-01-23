@@ -9,8 +9,6 @@ function UnderstandingView() {
     const feedback = useSelector(store => store.feedbackReducer);
     const dispatch = useDispatch();
 
-    console.log('Current feedback is: ', feedback);
-
     // State variable for understanding score
     const [understandingScore, setUnderstandingScore] = useState(feedback.understanding);
 
