@@ -63,15 +63,15 @@ function SupportView() {
                         ))}
 
                     </TextField>
-                    <CardActions>
-                        <Link to="/understanding">
-                            <Button variant="outlined" type="button">
-                                Back
-                            </Button>
-                        </Link>
+                    <CardActions sx={{ marginTop: 3 }}>
                         <Button variant="contained" size="medium" type="submit">
                             Continue
                         </Button>
+                        <Link to="/understanding">
+                            <Button variant="text" type="button">
+                                Back
+                            </Button>
+                        </Link>
                     </CardActions>
                 </form>
             </CardContent>

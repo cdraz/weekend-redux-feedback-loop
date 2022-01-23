@@ -1,4 +1,3 @@
-import './FeelingView.css'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -43,7 +42,7 @@ function FeelingView() {
     const scores = [ 1, 2, 3, 4, 5 ]
 
     return (
-        <Card sx={{ minWidth: 275, maxWidth: 700, margin: 'auto' }}>
+        <Card variant="outlined" sx={{ minWidth: 275, maxWidth: 700, margin: 'auto' }}>
             <CardContent>
                 <Typography variant="h5">
                     How are you feeling today?
@@ -65,7 +64,7 @@ function FeelingView() {
                         ))}
 
                     </TextField>
-                    <CardActions sx={{ textAlign: 'center' }}>
+                    <CardActions sx={{ marginTop: 3 }}>
                         <Button variant="contained" size="medium" type="submit">
                             Continue
                         </Button>

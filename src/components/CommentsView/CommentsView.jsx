@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // Import MUI components
 import Button from '@mui/material/Button';
@@ -11,15 +11,17 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 function CommentsView() {
-    // Store access and dispatch hook
+    // Store access, dispatch hook, and history hook
     const feedback = useSelector(store => store.feedbackReducer);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // State variable for comments
     const [comments, setComments] = useState(feedback.comments);
 
     // Declare onContinue function
-    const onContinue = () => {
+    const onContinue = event => {
+        event.preventDefault();
         console.log('in onContinue in CommentsView');
         console.log('Updating comments in store: ', comments);
         // Dispatch comments to redux store
@@ -30,6 +32,8 @@ function CommentsView() {
                 comments: comments
             }
         });
+            // Navigate to next page
+            history.push('/review')
     }
 
     return (
@@ -49,15 +53,13 @@ function CommentsView() {
                         onChange={event => setComments(event.target.value)}
                     >
                     </TextField>
-                    <CardActions>
+                    <CardActions sx={{ marginTop: 3 }}>
+                        <Button variant="contained" size="medium" type="submit">
+                            Continue
+                        </Button>
                         <Link to="/support">
-                            <Button variant="outlined" type="button">
+                            <Button variant="text" type="button">
                                 Back
-                            </Button>
-                        </Link>
-                        <Link to="/review">
-                            <Button variant="contained" size="medium" type="submit">
-                                Continue
                             </Button>
                         </Link>
                     </CardActions>

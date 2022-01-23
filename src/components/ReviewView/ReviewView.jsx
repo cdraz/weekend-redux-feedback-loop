@@ -3,6 +3,19 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
+// Import MUI components
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
+
 function ReviewView() {
     // Store access, dispatch hook, and history hook
     const feedback = useSelector(store => store.feedbackReducer);
@@ -55,37 +68,43 @@ function ReviewView() {
     }
 
     return (
-        <>
-        <h3>Review</h3>
-        <table>
-            <tbody>
-                <tr>
-                    <td>Feelings</td>
-                    <td>{feedback.feeling}</td>
-                </tr>
-                <tr>
-                    <td>Understanding</td>
-                    <td>{feedback.understanding}</td>
-                </tr>
-                <tr>
-                    <td>Support</td>
-                    <td>{feedback.support}</td>
-                </tr>
-                <tr>
-                    <td>Comments</td>
-                    <td>{feedback.comments}</td>
-                </tr>
-            </tbody>
-        </table>
-        <Link to="/comments">
-                    <button type="button">
-                        Back
-                    </button>
-        </Link>
-        <button onClick={onSubmit}>
-            Submit
-        </button>
-        </>
+        <Card variant="outlined" sx={{ minWidth: 275, maxWidth: 700, margin: 'auto' }}>
+            <CardContent sx={{ }}>
+                <h3>Review</h3>
+                <TableContainer sx={{ margin: 5 }}>
+                    <Table>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell align="left">Feelings</TableCell>
+                                <TableCell align="left">{feedback.feeling}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="left">Understanding</TableCell>
+                                <TableCell align="left">{feedback.understanding}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="left">Support</TableCell>
+                                <TableCell align="left">{feedback.support}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="left">Comments</TableCell>
+                                <TableCell align="left">{feedback.comments}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <CardActions sx={{ marginTop: 3 }}>
+                    <Button variant="contained" onClick={onSubmit}>
+                        Submit
+                    </Button>
+                    <Link to="/comments">
+                        <Button variant="text" type="button">
+                            Back
+                        </Button>
+                    </Link>
+                </CardActions>
+            </CardContent>
+        </Card>
     )
 }
 

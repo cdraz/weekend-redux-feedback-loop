@@ -42,7 +42,7 @@ function UnderstandingView() {
     const scores = [ 1, 2, 3, 4, 5 ]
 
     return (
-        <Card sx={{ minWidth: 275, maxWidth: 700, margin: 'auto' }}>
+        <Card variant="outlined" sx={{ minWidth: 275, maxWidth: 700, margin: 'auto' }}>
             <CardContent>
                 <Typography variant="h5">
                     How well are you understanding the material?
@@ -64,15 +64,15 @@ function UnderstandingView() {
                         ))}
 
                     </TextField>
-                    <CardActions>
-                        <Link to="/feeling">
-                            <Button variant="outlined" type="button">
-                                Back
-                            </Button>
-                        </Link>
+                    <CardActions sx={{ marginTop: 3 }}>
                         <Button variant="contained" size="medium" type="submit">
                             Continue
                         </Button>
+                        <Link to="/feeling">
+                                <Button variant="text" type="button">
+                                    Back
+                                </Button>
+                        </Link>
                     </CardActions>
                 </form>
             </CardContent>
