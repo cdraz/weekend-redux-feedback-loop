@@ -1,6 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+// Import MUI components
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 function FeelingView() {
 
@@ -29,24 +38,40 @@ function FeelingView() {
         history.push('/understanding')
     }
 
+    // Set score options for MUI select and menu item
+    const scores = [ 1, 2, 3, 4, 5 ]
+
     return (
-        <>
-            <h3>How are you feeling today?</h3>
-            <form onSubmit={onContinue}>
-                <input
-                    required
-                    id="feeling_score"
-                    name="feeling"
-                    type="number"
-                    value={feelingScore}
-                    onChange={event => setFeelingScore(event.target.value)}
-                />
-                <input
-                    type="submit"
-                    value="Continue"
-                />
-            </form>
-        </>
+        <Card variant="outlined" sx={{ minWidth: 275, maxWidth: 700, margin: 'auto' }}>
+            <CardContent>
+                <Typography variant="h5">
+                    How are you feeling today?
+                </Typography>
+                <form onSubmit={onContinue}>
+                    <TextField sx={{ width: 125, margin: 5 }}
+                        required
+                        select
+                        variant="outlined"
+                        label="Feeling"
+                        type="number"
+                        value={feelingScore}
+                        onChange={event => setFeelingScore(event.target.value)}
+                    >
+                        {scores.map( option => (
+                            <MenuItem key={option} value={option}>
+                                {option}
+                            </MenuItem>
+                        ))}
+
+                    </TextField>
+                    <CardActions sx={{ marginTop: 3 }}>
+                        <Button variant="contained" size="medium" type="submit">
+                            Continue
+                        </Button>
+                    </CardActions>
+                </form>
+            </CardContent>
+        </Card>
     )
 }
 
