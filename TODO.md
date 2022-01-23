@@ -10,6 +10,6 @@ SET UP
 [ ] Data setup
     [ ] Data structure mockup
     [x] SQL setup
-    [ ] Index.js / redux
-        [ ] Reducers
-        [ ] Store
+    [x] Index.js / redux
+        [x] Reducers
+        [x] Store
