@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
 function ReviewView() {
-    // Store access and history hook
+    // Store access, dispatch hook, and history hook
     const feedback = useSelector(store => store.feedbackReducer);
+    const dispatch = useDispatch();
     const history = useHistory();
 
     console.log('Current feedback is: ', feedback);
@@ -34,6 +35,10 @@ function ReviewView() {
         axios.post('/feedback', feedback)
         .then( res => {
             console.log('POST /feedback success', res.data);
+            // Clear redux store to prepare for next submission
+            dispatch({
+                type: 'RESET_FEEDBACK'
+            });
         })
         .catch( err => {
             console.error('POST /feedback failed', err);
