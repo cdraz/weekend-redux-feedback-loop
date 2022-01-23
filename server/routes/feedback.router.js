@@ -7,6 +7,16 @@ router.post('/', (req, res) => {
     console.log('in POST');
     const feedback = req.body;
 
+    // Validate required data
+    if (!feedback.feeling || !feedback.understanding || !feedback.support) {
+        res.sendStatus(400);
+        return;
+    }
+    if (isNaN(feedback.feeling) || isNaN(feedback.understanding) || isNaN(feedback.support)) {
+        res.sendStatus(400);
+        return;
+    }
+
     // Write SQL query
     const sqlText = `INSERT INTO feedback (feeling, understanding, support, comments)
                      VALUES ($1, $2, $3, $4)`

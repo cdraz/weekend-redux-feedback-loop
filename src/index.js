@@ -15,7 +15,7 @@ const feedbackReducer = (state = {
     understanding: '',
     support: '',
     comments: ''
-}, action) => {
+    }, action) => {
     switch (action.type) {
         case 'SUBMIT_FEEDBACK':
             console.log('in SUBMIT_FEEDBACK');
