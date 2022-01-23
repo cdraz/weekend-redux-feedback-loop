@@ -26,7 +26,7 @@ function ReviewView() {
 
         // Validate that all required scores are provided
         if (!feedback.feeling || !feedback.understanding || !feedback.support) {
-            window.alert('Missing a required score. Please go back and ensure all required scores are provided, then try again.')
+            window.alert('Missing a required score or provided score is invalid. Please go back and ensure all required scores are provided and valid, then try again.')
             return;
         }
 
@@ -42,6 +42,12 @@ function ReviewView() {
         })
         .catch( err => {
             console.error('POST /feedback failed', err);
+            if (err === 500) {
+                window.alert('Submission failed -- Error with server. Please try again later.');
+            }
+            if (err === 400) {
+                window.alert('Submission failed. Please ensure all required scores are provided.');
+            }
         });
 
         // Navigate to next page
