@@ -9,7 +9,7 @@ SET UP
     [x] review view
 [ ] Data setup
     [ ] Data structure mockup
-    [ ] SQL setup
+    [x] SQL setup
     [ ] Index.js / redux
         [ ] Reducers
         [ ] Store
