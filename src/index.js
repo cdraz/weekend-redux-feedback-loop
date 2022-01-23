@@ -20,6 +20,14 @@ const feedbackReducer = (state = {
         case 'SUBMIT_FEEDBACK':
             console.log('in SUBMIT_FEEDBACK');
             return action.payload;
+        case 'RESET_FEEDBACK':
+            console.log('Resetting redux store...');
+            return {
+                feeling: '',
+                understanding: '',
+                support: '',
+                comments: ''
+            }
         default:
             return state;
     }

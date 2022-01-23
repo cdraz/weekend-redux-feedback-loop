@@ -34,6 +34,11 @@ function CommentsView() {
                     value={comments}
                     onChange={event => setComments(event.target.value)}
             />
+            <Link to="/support">
+                <button type="button">
+                    Back
+                </button>
+            </Link>
             <Link to="/review">
                 <button onClick={onContinue}>
                     Continue

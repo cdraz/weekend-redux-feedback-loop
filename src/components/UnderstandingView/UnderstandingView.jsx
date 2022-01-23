@@ -42,6 +42,11 @@ function UnderstandingView() {
                 value={understandingScore}
                 onChange={event => setUnderstandingScore(event.target.value)}
             />
+            <Link to="/feeling">
+                <button type="button">
+                    Back
+                </button>
+            </Link>
             <input
                 type="submit"
                 value="Continue"
